@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLACK BLADE — Barbershop</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #090909;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+:root {
+  --gold: #c6a36a;
+  --dark: #090909;
+  --gray: #aaa;
+}
+
+header {
+  height: 85px;
+  padding: 0 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #080808;
+  border-bottom: 1px solid #292929;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+nav {
+  display: flex;
+  gap: 27px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.book-btn {
+  background: var(--gold);
+  color: black;
+  border: none;
+  padding: 14px 22px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.book-btn:hover {
+  background: white;
+  transform: translateY(-3px);
+}
+
+.hero {
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  padding: 90px 10%;
+  background:
+    linear-gradient(90deg, #080808 15%, rgba(8,8,8,.82) 60%, rgba(8,8,8,.5)),
+    url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 8vw, 95px);
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  color: #bbb;
+  line-height: 1.8;
+  max-width: 450px;
+  margin-bottom: 35px;
+}
+
+.section {
+  padding: 100px 9%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.section-title span {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 11px;
+}
+
+.section-title h2 {
+  font-size: clamp(32px, 5vw, 50px);
+  margin: 18px 0;
+}
+
+.section-title p {
+  color: var(--gray);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: #151515;
+  border: 1px solid #292929;
+  padding: 32px;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+}
+
+.number {
+  color: var(--gold);
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.card h3 {
+  font-size: 21px;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: var(--gray);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.price {
+  display: block;
+  color: var(--gold);
+  font-size: 20px;
+  margin-top: 25px;
+}
+
+.dark-section {
+  background: #050505;
+}
+
+.master-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.master-photo {
+  height: 260px;
+  background: linear-gradient(135deg, #292929, #090909);
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.master-info {
+  padding: 25px;
+}
+
+.master-info p {
+  color: var(--gray);
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  filter: grayscale(40%);
+  transition: .4s;
+}
+
+.gallery img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+.advantages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 35px;
+  text-align: center;
+}
+
+.advantage h3 {
+  color: var(--gold);
+  margin: 15px 0;
+}
+
+.advantage p {
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.contact {
+  text-align: center;
+  background: linear-gradient(135deg, #191919, #050505);
+}
+
+.phone {
+  display: block;
+  color: var(--gold);
+  font-size: clamp(25px, 5vw, 40px);
+  text-decoration: none;
+  margin: 30px 0;
+}
+
+footer {
+  background: #030303;
+  text-align: center;
+  padding: 45px 15px;
+  border-top: 1px solid #292929;
+}
+
+footer h2 {
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+
+footer p {
+  color: #777;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.9);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-box {
+  position: relative;
+  background: #171717;
+  border: 1px solid var(--gold);
+  padding: 50px 30px;
+  max-width: 430px;
+  width: 100%;
+  text-align: center;
+  animation: appear .3s ease;
+}
+
+.modal-box h2 {
+  margin: 20px 0;
+  font-size: 30px;
+}
+
+.modal-box p {
+  color: #aaa;
+  line-height: 1.7;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.call-btn {
+  display: block;
+  background: var(--gold);
+  color: black;
+  text-decoration: none;
+  padding: 18px;
+  font-weight: bold;
+  margin-top: 25px;
+  line-height: 1.6;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width: 850px) {
+  nav {
+    display: none;
+  }
+
+  header {
+    padding: 0 5%;
+  }
+
+  .hero {
+    min-height: 550px;
+    padding: 70px 7%;
+  }
+
+  .section {
+    padding: 75px 6%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">BLACK <span>BLADE</span></div>
+
+  <nav>
+    <a href="#services">Послуги</a>
+    <a href="#masters">Майстри</a>
+    <a href="#gallery">Галерея</a>
+    <a href="#reviews">Відгуки</a>
+    <a href="#contacts">Контакти</a>
+  </nav>
+
+  <button class="book-btn" onclick="openBooking()">
+    ЗАПИСАТИСЯ
+  </button>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">PREMIUM BARBERSHOP</div>
+    <h1>YOUR STYLE.<br><span>YOUR RULES.</span></h1>
+    <p>
+      Місце, де народжується твій стиль.
+      Професійні майстри, атмосфера та увага до деталей.
+    </p>
+    <button class="book-btn" onclick="openBooking()">
+      ЗАПИСАТИСЯ НА СТРИЖКУ
+    </button>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-title">
+    <span>BLACK BLADE / SERVICES</span>
+    <h2>НАШІ ПОСЛУГИ</h2>
+    <p>Твій стиль починається тут.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="number">01</div>
+      <h3>Чоловіча стрижка</h3>
+      <p>Індивідуальний образ та професійна робота.</p>
+      <strong class="price">Від 400 ₴</strong>
+    </div>
+
+    <div class="card">
+      <div class="number">02</div>
+      <h3>FADE</h3>
+      <p>Плавний перехід та чіткі лінії.</p>
+      <strong class="price">Від 450 ₴</strong>
+    </div>
+
+    <div class="card">
+      <div class="number">03</div>
+      <h3>Оформлення бороди</h3>
+      <p>Акуратна форма та доглянутий вигляд.</p>
+      <strong class="price">Від 250 ₴</strong>
+    </div>
+
+    <div class="card">
+      <div class="number">04</div>
+      <h3>Комплекс</h3>
+      <p>Стрижка волосся та оформлення бороди.</p>
+      <strong class="price">Від 600 ₴</strong>
+    </div>
+  </div>
+</section>
+
+<section class="section dark-section" id="masters">
+  <div class="section-title">
+    <span>BLACK BLADE / TEAM</span>
+    <h2>НАШІ МАЙСТРИ</h2>
+    <p>Люди, які створюють твій стиль.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card master-card">
+      <div class="master-photo">BB</div>
+      <div class="master-info">
+        <h3>BARBER №01</h3>
+        <p>Спеціалізація: сучасні чоловічі стрижки.</p>
+      </div>
+    </div>
+
+    <div class="card master-card">
+      <div class="master-photo">BB</div>
+      <div class="master-info">
+        <h3>BARBER №02</h3>
+        <p>Спеціалізація: класика та оформлення бороди.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="section-title">
+    <span>BLACK BLADE / PORTFOLIO</span>
+    <h2>НАШІ РОБОТИ</h2>
+    <p>Стиль у кожній деталі.</p>
+  </div>
+
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600" alt="Чоловіча стрижка">
+    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600" alt="Барбер">
+    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600" alt="Барбершоп">
+    <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600" alt="Стрижка">
+  </div>
+</section>
+
+<section class="section dark-section">
+  <div class="section-title">
+    <span>BLACK BLADE / QUALITY</span>
+    <h2>ЧОМУ МИ?</h2>
+  </div>
+
+  <div class="advantages">
+    <div class="advantage">
+      <h3>01 / ЯКІСТЬ</h3>
+      <p>Увага до кожної деталі.</p>
+    </div>
+    <div class="advantage">
+      <h3>02 / СТИЛЬ</h3>
+      <p>Сучасні техніки та індивідуальний підхід.</p>
+    </div>
+    <div class="advantage">
+      <h3>03 / АТМОСФЕРА</h3>
+      <p>Комфорт та барбер-культура.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="section-title">
+    <span>BLACK BLADE / REVIEWS</span>
+    <h2>ВІДГУКИ</h2>
+    <p>Думки наших клієнтів.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="stars">★★★★★</div>
+      <p>«Чудова атмосфера та професійний підхід!»</p>
+      <strong class="price">Клієнт BLACK BLADE</strong>
+    </div>
+
+    <div class="card">
+      <div class="stars">★★★★★</div>
+      <p>«Стильно, комфортно та якісно.»</p>
+      <strong class="price">Клієнт BLACK BLADE</strong>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contacts">
+  <div class="section-title">
+    <span>BLACK BLADE / CONTACTS</span>
+    <h2>ЧАС ОНОВИТИ СВІЙ СТИЛЬ?</h2>
+    <p>Зателефонуйте нам та домовтеся про візит.</p>
+
+    <a class="phone" href="tel:+380988115087">
+      +380 98 811 50 87
+    </a>
+
+    <button class="book-btn" onclick="openBooking()">
+      ЗАПИСАТИСЯ
+    </button>
+  </div>
+</section>
+
+<footer>
+  <h2>BLACK BLADE</h2>
+  <p>YOUR STYLE. YOUR RULES.</p>
+  <p>© 2026 BLACK BLADE</p>
+</footer>
+
+<div class="modal" id="bookingModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeBooking()">×</button>
+
+    <div class="eyebrow">BLACK BLADE / BOOKING</div>
+
+    <h2>ЗАПИС НА ВІЗИТ</h2>
+
+    <p>
+      Зателефонуйте нам, щоб узгодити
+      зручний час та записатися на послугу.
+    </p>
+
+    <a class="call-btn" href="tel:+380988115087">
+      ☎ ПОЗВОНИТИ<br>
+      +380 98 811 50 87
+    </a>
+  </div>
+</div>
+
+<script>
+function openBooking() {
+  document.getElementById("bookingModal").classList.add("active");
+}
+
+function closeBooking() {
+  document.getElementById("bookingModal").classList.remove("active");
+}
+
+document.getElementById("bookingModal").addEventListener("click", function(event) {
+  if (event.target === this) {
+    closeBooking();
+  }
+});
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeBooking();
+  }
+});
+</script>
+
+</body>
+</html>
